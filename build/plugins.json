@@ -1,0 +1,19 @@
+[
+    {
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 5523,
+        "status": 1,
+        "authors": [
+            "Cloudburst"
+        ],
+        "tvTypes": [
+            "Others"
+        ],
+        "version": 1,
+        "internalName": "ExampleProvider",
+        "description": "Lorem Ipsum",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/ExampleProvider.cs3",
+        "name": "ExampleProvider"
+    }
+]

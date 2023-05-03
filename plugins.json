@@ -1,0 +1,189 @@
+[
+    {
+        "iconUrl": "https://cdn.animevietsub.moe/data/logo/logoz.png",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 17172,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "Anime"
+        ],
+        "version": 2,
+        "internalName": "AnimeVietsubProvider",
+        "description": "Chuy\u00ean Anime Vietsub 1080P",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/AnimeVietsubProvider.cs3",
+        "name": "AnimeVietsubProvider"
+    },
+    {
+        "iconUrl": "https://play-lh.googleusercontent.com/TOTj0uMWp7cXkjXDXkcTZnPigUmpLRRiH956lHRJxStlY7ucxmtwMs_Kr2wOWYm0fSY=w240-h480-rw",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 22507,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 4,
+        "internalName": "FshareProvider",
+        "description": "Fshare 4K Bluray , 2k ,1080P \u0111\u1ee7 th\u1ec3 lo\u1ea1i. Bu\u1ed5i t\u1ed1i ae k\u00e9o nhi\u1ec1u h\u01a1i lag :3",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/FshareProvider.cs3",
+        "name": "FshareProvider"
+    },
+    {
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 9087,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 1,
+        "internalName": "LiveTVProvider",
+        "description": "Live TV",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/LiveTVProvider.cs3",
+        "name": "LiveTVProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=loklok.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 48118,
+        "status": 0,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 5,
+        "internalName": "LoklokProvider",
+        "description": "#1 best extension in VN",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/LoklokProvider.cs3",
+        "name": "LoklokProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=loklok.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 25883,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 3,
+        "internalName": "OphimProvider",
+        "description": "#Ophim API",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/OphimProvider.cs3",
+        "name": "OphimProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=xem1080.com",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 21357,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "TuaSan"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 6,
+        "internalName": "Phim1080Provider",
+        "description": "Xem Phim Online Ch\u1ea5t L\u01b0\u1ee3ng Cao",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Phim1080Provider.cs3",
+        "name": "Phim1080Provider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=phimmoichilld.net&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 15066,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 9,
+        "internalName": "PhimmoiProvider",
+        "description": "#1",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/PhimmoiProvider.cs3",
+        "name": "PhimmoiProvider"
+    },
+    {
+        "iconUrl": "https://subnhanh.vip/logo1.png",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 16276,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 2,
+        "internalName": "SubnhanhProvider",
+        "description": "#Subnhanh",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/SubnhanhProvider.cs3",
+        "name": "SubnhanhProvider"
+    },
+    {
+        "iconUrl": "https://tvhay8.org/assets/v1/images/logo.png",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 14543,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 4,
+        "internalName": "TvHayProvider",
+        "description": "#TVHay Phim Thuy\u1ebft Minh",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/TvHayProvider.cs3",
+        "name": "TvHayProvider"
+    }
+]
