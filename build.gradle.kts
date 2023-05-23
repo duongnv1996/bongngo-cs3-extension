@@ -37,7 +37,9 @@ subprojects {
     cloudstream {
         // when running through github workflow, GITHUB_REPOSITORY should contain current repository name
         // you can modify it to use other git hosting services, like gitlab
-        setRepo(System.getenv("GITHUB_REPOSITORY") ?: "https://github.com/duongnv1996/bongngo-cs3-extension")
+//        setRepo(System.getenv("GITHUB_REPOSITORY") ?: "https://github.com/duongnv1996/phimhd-cloudstream")
+        setRepo("https://github.com/cinehubwork/abc/releases/download/prelease")
+        overrideUrlPrefix("https://github.com/cinehubwork/abc/releases/download/prelease")
     }
 
     android {
@@ -79,6 +81,8 @@ subprojects {
         implementation("com.github.Blatzar:NiceHttp:0.3.2") // http library
         implementation("org.jsoup:jsoup:1.13.1") // html parser
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+        implementation("com.squareup.retrofit2:converter-gson:2.3.0")
+        implementation("com.squareup.retrofit2:retrofit:2.5.0")
     }
 }
 
