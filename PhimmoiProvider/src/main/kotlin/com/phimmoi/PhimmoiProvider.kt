@@ -3,10 +3,12 @@ package com.phimmoi
 import android.util.Log
 import android.util.Patterns
 import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.ui.search.SearchFragment
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.getQualityFromName
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -14,6 +16,8 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
     override var mainUrl = "https://phimmoichillc.net/"
     override var name = "Phimmoi"
     override val supportedTypes = setOf(TvType.Movie)
+    private val defaultPageUrl: String
+        get() = "${mainUrl}/genre/phim-chieu-rap/"
     companion object {
         const val HOST_STREAM = "dash.megacdn.xyz";
     }
@@ -23,10 +27,103 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
     override val hasMainPage = true
 
     // this function gets called when you search for something
-    override suspend fun search(query: String): List<SearchResponse> {
-        return listOf<SearchResponse>()
+    override suspend fun search(query: String): List<SearchResponse>? {
+        val url = if(query == SearchFragment.DEFAULT_QUERY_SEARCH) defaultPageUrl else "$mainUrl/tim-kiem/${query}/"
+        val html = app.get(url).text
+        val document = Jsoup.parse(html)
+
+        return document.select("#binlist .item").map {
+            getItemMovie(it)
+        }
     }
 
+
+    override suspend fun getMenus(): List<Pair<String, List<Page>>>? {
+        val html = app.get(mainUrl).text
+        val doc = Jsoup.parse(html)
+        val listGenre = arrayListOf<Page>()
+        doc.select("#main-menu .sub-menu").first()!!.select("li").forEach {
+            val url = it.selectFirst("a")!!.attr("href")
+            val name = it.selectFirst("a")!!.text().trim()
+            listGenre.add(Page(name, url, nameApi = this.name))
+        }
+        val listCountry = arrayListOf<Page>()
+        doc.select("#main-menu .sub-menu")[1].select("li").forEach {
+            val url = it.selectFirst("a")!!.attr("href")
+            val name = it.selectFirst("a")!!.text().trim()
+            listCountry.add(Page(name, url, nameApi = this.name))
+        }
+        return arrayListOf<Pair<String, List<Page>>>(
+            Pair("Thể loại", listGenre),
+            Pair("Quốc gia", listCountry)
+        )
+    }
+    private fun getItemMovie(it: Element): MovieSearchResponse {
+        val title = it.select("h3").last()!!.text()
+        val href = fixUrl(it.selectFirst("a")!!.attr("href"))
+        val year = 0
+        val image = it.selectFirst("img")!!.attr("src")
+        //            val isMovie = href.contains("/movie/")
+        return MovieSearchResponse(
+            title,
+            href,
+            this.name,
+            TvType.Movie,
+            image,
+            year,
+            posterHeaders = mapOf("referer" to mainUrl)
+        )
+    }
+    override suspend fun loadPage(url: String): PageResponse? {
+        val html = app.get(url).text
+        val document = Jsoup.parse(html)
+
+        val list =  document.select("#binlist .item").map {
+            getItemMovie(it)
+        }
+        return PageResponse(list,getPagingResult(document))
+    }
+    private fun getPagingResult( document: Document): String? {
+        val tagPageResult: Element? = document.selectFirst(".pagination li")
+        if (tagPageResult == null) { // only one page
+
+            //LogUtils.d("no more page")
+        } else {
+            val listLiPage = document.select(".pagination li")
+            if (listLiPage != null && !listLiPage.isEmpty()) {
+                for (i in listLiPage.indices) {
+                    val li = listLiPage[i].select("a")
+                    if ((li).attr("class") != null && (li).attr("class").contains("current")) {
+
+                        if (i == listLiPage.size - 1) {
+                            //last page
+                            //LogUtils.d("no more page")
+                        } else {
+                            if ( listLiPage[i + 1] != null) {
+                                val nextLi = listLiPage[i + 1]
+                                val a = nextLi.getElementsByTag("a")
+                                if (a != null && !a.isEmpty()) {
+                                    var nextUrl = fixUrl(a.first()!!.attr("href"))
+
+                                    //LogUtils.d("has more page")
+                                    return nextUrl
+                                } else {
+                                    //LogUtils.d("no more page")
+
+                                }
+                            } else {
+                                //LogUtils.d("no more page")
+                            }
+                        }
+                        break
+                    }
+                }
+            } else {
+                //LogUtils.d("no more page")
+            }
+        }
+        return null
+    }
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse? {
         val html = app.get(mainUrl).text
         val doc = Jsoup.parse(html)
@@ -39,7 +136,7 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
                 val href = fixUrl(it.selectFirst("a")!!.attr("href"))
                 val year = 0
                 val image = it.selectFirst("img")!!.attr("src")
-                MovieSearchResponse(
+                LiveTvSearchResponse(
                     title,
                     href,
                     this.name,
@@ -50,7 +147,7 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
                 )
             }
             if (listMovie.isNotEmpty())
-                listHomePageList.add(HomePageList(name, listMovie ))
+                listHomePageList.add(HomePageList(name, listMovie,isHorizontalImages = true ))
         }
 
         return HomePageResponse(listHomePageList)
@@ -156,7 +253,7 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
             val title = it.select("p").last()!!.text()
             val href = fixUrl(it.selectFirst("a")!!.attr("href"))
             val year = 0
-            val image = it.selectFirst("img")!!.attr("src")
+            val image = it.selectFirst("img")!!.attr("data-src")
             MovieSearchResponse(
                 title,
                 href,
