@@ -39,7 +39,7 @@ subprojects {
         // you can modify it to use other git hosting services, like gitlab
         setRepo(System.getenv("GITHUB_REPOSITORY") ?: "https://github.com/duongnv1996/bongngo-cs3-extension")
         setRepo("https://github.com/cinehubwork/abc/releases/download/prelease")
-        overrideUrlPrefix("https://github.com/cinehubwork/abc/releases/download/prelease")
+//        overrideUrlPrefix("https://github.com/cinehubwork/abc/releases/download/prelease")
     }
 
     android {
