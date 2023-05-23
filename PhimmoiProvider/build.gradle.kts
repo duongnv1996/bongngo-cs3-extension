@@ -1,5 +1,5 @@
 // use an integer for version numbers
-version = 5
+version = 6
 
 
 cloudstream {
@@ -17,7 +17,7 @@ cloudstream {
     language = "en"
     // All of these properties are optional, you can safely remove them
 
-    description = "#1 best extension in VN"
+    description = "#1"
     authors = listOf("Blue")
 
     // List of video source types. Users are able to filter for extensions in a given category.
@@ -25,7 +25,6 @@ cloudstream {
     // https://recloudstream.github.io/cloudstream/html/app/com.lagradost.cloudstream3/-tv-type/index.html
     tvTypes = listOf(
             "AsianDrama",
-            "Anime",
             "TvSeries",
             "Movie",
     )

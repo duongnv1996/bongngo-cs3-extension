@@ -90,10 +90,10 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
             //LogUtils.d("no more page")
         } else {
             val listLiPage = document.select(".pagination li")
-            if (listLiPage != null && !listLiPage.isEmpty()) {
+            if (!listLiPage.isEmpty()) {
                 for (i in listLiPage.indices) {
                     val li = listLiPage[i].select("a")
-                    if ((li).attr("class") != null && (li).attr("class").contains("current")) {
+                    if ((li).attr("class").contains("current")) {
 
                         if (i == listLiPage.size - 1) {
                             //last page
@@ -102,7 +102,7 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
                             if ( listLiPage[i + 1] != null) {
                                 val nextLi = listLiPage[i + 1]
                                 val a = nextLi.getElementsByTag("a")
-                                if (a != null && !a.isEmpty()) {
+                                if (!a.isEmpty()) {
                                     var nextUrl = fixUrl(a.first()!!.attr("href"))
 
                                     //LogUtils.d("has more page")
