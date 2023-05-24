@@ -1,24 +1,26 @@
 package com.loklok
 
 import android.util.Log
+
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.Gson
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addAniListId
 import com.lagradost.cloudstream3.LoadResponse.Companion.addMalId
-import com.loklok.LoklokUtils.getAesKey
-import com.loklok.LoklokUtils.getDeviceId
-import com.loklok.LoklokUtils.getLanguage
-import com.loklok.LoklokUtils.getQuality
-import com.loklok.LoklokUtils.getSign
-import com.loklok.LoklokUtils.upgradeSoraUrl
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.getAesKey
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.getDeviceId
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.getLanguage
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.getQuality
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.getSign
+import com.lagradost.cloudstream3.testprovider.LoklokUtils.upgradeSoraUrl
 import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 import com.lagradost.cloudstream3.utils.AppUtils.toJson
 import com.lagradost.nicehttp.RequestBodyTypes
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import okio.ByteString.Companion.encode
 import java.net.URI
 import java.util.concurrent.TimeUnit
 
@@ -52,8 +54,8 @@ open class Loklok : MainAPI() {
         val params = emptyMap<String,String>()
         val homeCategoryResponse = Gson().fromJson<HomeCategoryResponse>(
             app.get(
-                "$apiUrl/search/list",
-                 headers = createHeaders(params),
+                "${apiUrl}/search/list",
+                headers = createHeaders(params),
                 cacheTime = 4,
                 cacheUnit = TimeUnit.HOURS
             ).text, HomeCategoryResponse::class.java
@@ -66,7 +68,7 @@ open class Loklok : MainAPI() {
         val  menu2 = Pair(menuTitleMovie,
             homeCategoryResponse.toListMoviesPage(name)
         )
-       return listOf(menu1,menu2)
+        return listOf(menu1,menu2)
     }
     private fun createHeaders(
         params: Map<String, String>,
@@ -263,16 +265,18 @@ open class Loklok : MainAPI() {
                     RequestBodyTypes.JSON.toMediaTypeOrNull()
                 )
             val params = mapOf(
-            "category" to res.category.toString(),
-            "contentId" to res.id.toString(),
-            "definition" to video.code.toString(),
-            "episodeId" to res.epId.toString(),
-        )
+                "category" to res.category.toString(),
+                "contentId" to res.id.toString(),
+                "definition" to video.code.toString(),
+                "episodeId" to res.epId.toString(),
+            )
             val json = app.get(
                 "$apiUrl/movieDrama/getPlayInfo",
                 params = params,
                 headers = createHeaders(params),
             ).parsedSafe<PreviewResponse>()?.data
+            val expiry = System.currentTimeMillis() + 60 * 60 * 12 * 7
+            val mac = "fuckfuck".encode().hmacSha256("$expiry".encode()).hex()
             callback.invoke(
                 ExtractorLink(
                     this.name,
@@ -281,6 +285,7 @@ open class Loklok : MainAPI() {
                     if(json.mediaUrl.startsWith(play)) "https://loklok.com/" else "",
                     getQuality(json.currentDefinition ?: ""),
                     isM3u8 = URI(json.mediaUrl).path.endsWith(".m3u8"),
+                    headers = mapOf("Cookie" to "hdntl=exp=$expiry-acl=%2f*-data=hdntl-hmac=$mac")
                 )
             )
         }
@@ -537,7 +542,7 @@ open class Loklok : MainAPI() {
 //            id = contentId.toInt()
 //        )
         return newMovieSearchResponse(
-             name,
+            name,
             UrlData( contentId.toInt(),  domainType).toJson(),
             TvType.Movie,
         ) {
@@ -584,7 +589,7 @@ open class Loklok : MainAPI() {
                 "page" to page.toString(),
                 "size" to "18",
             )
-            val urlRequest = "$apiUrl/album/detail"
+            val urlRequest = "${apiUrl}/album/detail"
             val response = app.get(urlRequest,params = params, headers = createHeaders(params)).text
             val homeResponse = Gson().fromJson<HomeResponse>(response, HomeResponse::class.java)
             val list = homeResponse.data.content.map {
