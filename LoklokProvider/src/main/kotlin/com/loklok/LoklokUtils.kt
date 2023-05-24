@@ -47,7 +47,7 @@ object LoklokUtils : Loklok() {
     fun upgradeSoraUrl(url: String) : String {
         val expiry = System.currentTimeMillis() + 60 * 60 * 12 * 7
         val mac = "fuckfuck".encode().hmacSha256("$expiry".encode()).hex()
-        return "${url.replace(preview, akm).substringBefore(".m3u8")}.m3u8?hdntl=exp=$expiry-acl=%2f*-data=hdntl-hmac=$mac"
+        return "${url.replace(preview, akm).substringBefore(".m3u8")}.m3u8"
     }
 
     fun getDeviceId(length: Int = 16): String {

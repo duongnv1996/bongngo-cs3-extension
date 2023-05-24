@@ -97,7 +97,7 @@ open class Loklok : MainAPI() {
                 .filterNot { it.homeSectionType == "BLOCK_GROUP" }
                 .filterNot { it.homeSectionType == "BANNER" }
                 .mapNotNull { res ->
-                    val header = res.homeSectionName ?: return@mapNotNull null
+                    val header = res.homeSectionName?.replace("Loklok",name) ?: return@mapNotNull null
                     val media = res.media?.mapNotNull { media -> media.toSearchResponse() } ?: throw ErrorLoadingException()
                     home.add(HomePageList(header, media))
                 }
@@ -108,7 +108,7 @@ open class Loklok : MainAPI() {
     private fun Media.toSearchResponse(): SearchResponse? {
 
         return newMovieSearchResponse(
-            title ?: name ?: return null,
+            title?.replace("[Vietsub]","") ?: name?.replace("[Vietsub]","") ?: return null,
             UrlData(id, category ?: domainType).toJson(),
             TvType.Movie,
         ) {
