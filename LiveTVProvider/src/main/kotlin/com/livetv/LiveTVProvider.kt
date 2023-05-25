@@ -10,7 +10,7 @@ import com.phimhd.IPTV
 import com.phimhd.ListIPTV
 import com.phimhd.ResponseIPTV
 
-class IPTVProvider : MainAPI() {
+class LiveTVProvider : MainAPI() {
     override var name = IPTV_API_NAME
     override var mainUrl = "https://ophimx.app/api/phimhd/iptv"
     override val hasMainPage = true
