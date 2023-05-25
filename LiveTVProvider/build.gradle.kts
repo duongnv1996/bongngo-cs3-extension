@@ -17,17 +17,15 @@ cloudstream {
     language = "vi"
     // All of these properties are optional, you can safely remove them
 
-    description = "#TVHay Phim Thuyết Minh"
+    description = "Live TV"
     authors = listOf("Blue")
 
     // List of video source types. Users are able to filter for extensions in a given category.
     // You can find a list of avaliable types here:
     // https://recloudstream.github.io/cloudstream/html/app/com.lagradost.cloudstream3/-tv-type/index.html
     tvTypes = listOf(
-            "AsianDrama",
-            "Anime",
-            "TvSeries",
-            "Movie",
+
+            "Live",
     )
-    iconUrl = "https://tvhay8.org/assets/v1/images/logo.png"
+
 }

@@ -22,7 +22,7 @@ class SubNhanhProvider : MainAPI() {
         get() = "${mainUrl}/the-loai/phim-bo"
     override val hasQuickSearch: Boolean
         get() = true
-
+    override var lang = "vi"
     override val hasMainPage: Boolean
         get() = true
 

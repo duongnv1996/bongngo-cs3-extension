@@ -25,7 +25,7 @@ class TVHayProvider : MainAPI() {
         get() = "${mainUrl}/phim-moi/"
     override val hasQuickSearch: Boolean
         get() = true
-
+    override var lang = "vi"
     override val hasMainPage: Boolean
         get() = true
 

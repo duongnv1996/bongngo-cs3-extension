@@ -30,6 +30,7 @@ open class Loklok : MainAPI() {
     override val hasChromecastSupport = true
     override val instantLinkLoading = true
     override val hasQuickSearch = true
+    override var lang = "vi"
     override val supportedTypes = setOf(
         TvType.Movie,
         TvType.TvSeries,

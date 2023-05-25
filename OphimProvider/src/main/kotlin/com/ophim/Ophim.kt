@@ -32,7 +32,7 @@ fun MainAPI.fixUrl(url: String,domain : String): String {
 open class Ophim : MainAPI() {
     override var name = API_NAME
     override var mainUrl = "https://ophim1.com"
-
+    override var lang = "vi"
     override val hasMainPage = true
     override val hasChromecastSupport = true
     override val instantLinkLoading = true

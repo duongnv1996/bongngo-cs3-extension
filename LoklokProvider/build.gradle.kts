@@ -14,7 +14,7 @@ cloudstream {
     * 3: Beta only
     * */
     status = 1 // will be 3 if unspecified
-    language = "en"
+    language = "vi"
     // All of these properties are optional, you can safely remove them
 
     description = "#1 best extension in VN"
