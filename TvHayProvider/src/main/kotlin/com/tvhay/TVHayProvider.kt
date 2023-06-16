@@ -19,7 +19,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class TVHayProvider : MainAPI() {
-    override var mainUrl= "https://tvhayu.org"
+    override var mainUrl= "https://tvhaye.org"
     override var name= "TVHay"
      val defaultPageUrl: String
         get() = "${mainUrl}/phim-moi/"
