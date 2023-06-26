@@ -61,7 +61,7 @@ class TVHayProvider : MainAPI() {
                     val title = it.selectFirst(".info .name")!!.text()
                     val href = fixUrl(it.selectFirst("a")!!.attr("href"))
                     val year = it.selectFirst(".year")?.text()!!.trim().toInt()
-                    val image = it.selectFirst("img")!!.attr("data-original")
+                    val image = it.selectFirst("img")!!.attr("data-src")
                     MovieSearchResponse(
                         title,
                         href,
@@ -175,7 +175,7 @@ class TVHayProvider : MainAPI() {
         val title = it.selectFirst(".info .name")!!.text()
         val href = fixUrl(it.selectFirst("a")!!.attr("href"))
         val year = it.selectFirst(".year")?.text()!!.trim().toInt()
-        val image = it.selectFirst("img")!!.attr("data-original")
+        val image = it.selectFirst("img")!!.attr("data-src")
        return MovieSearchResponse(
             title,
             href,
@@ -275,7 +275,7 @@ class TVHayProvider : MainAPI() {
 //            }
 //        }
         val description = doc.select("#info-film").text()
-        val urlBackdoor = fixUrl(doc.select(".poster img").attr("src"))
+        val urlBackdoor = fixUrl(doc.select(".poster img").attr("data-src"))
 //            movie.urlReview = movie.urlDetail
         val urlWatch = doc.select(".btn-watch").attr("href")
         if(urlWatch.isNullOrBlank()){
