@@ -177,8 +177,9 @@ class FshareProvider : MainAPI() {
             }
         }
         movie?.let { movie ->
+            
             return TvSeriesLoadResponse(
-                name = movie.title,
+                name = movie.title.split("&&")[0],
                 url = url,
                 apiName = name,
                 type = TvType.TvSeries,
