@@ -1,11 +1,7 @@
-package com.loklok
-
-import android.text.Html
-import android.util.Log
+package com.ophim
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.lagradost.cloudstream3.*
-import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.*
 
 fun MainAPI.fixUrl(url: String,domain : String): String {
@@ -50,18 +46,18 @@ open class Ophim : MainAPI() {
         const val API_NAME = "Ổ Phim"
         const val PREFIX_GENRE = "/v1/api/the-loai"
         const val PREFIX_COUNTRY = "/v1/api/quoc-gia"
-        const val DOMAIN_DETAIL_MOVIE = "${DOMAIN}/v1/api/phim"
+        const val DOMAIN_DETAIL_MOVIE = "$DOMAIN/v1/api/phim"
     }
 
     override suspend fun getMenus(): List<Pair<String, List<Page>>>? {
         val listResult = arrayListOf<Pair<String, List<Page>>>()
-        val re = app.get("${mainUrl}${PREFIX_GENRE}").parsedSafe<ResponseMetaData>()?.data
-        app.get("${mainUrl}${PREFIX_GENRE}").parsedSafe<ResponseMetaData>()?.data?.items?.map {
+        val re = app.get("${mainUrl}$PREFIX_GENRE").parsedSafe<ResponseMetaData>()?.data
+        app.get("${mainUrl}$PREFIX_GENRE").parsedSafe<ResponseMetaData>()?.data?.items?.map {
             it.toPage(PREFIX_GENRE)
         }?.let {
             listResult.add(Pair("Thể loại", it))
         }
-        app.get("${mainUrl}${PREFIX_COUNTRY}").parsedSafe<ResponseMetaData>()?.data?.items?.map {
+        app.get("${mainUrl}$PREFIX_COUNTRY").parsedSafe<ResponseMetaData>()?.data?.items?.map {
             it.toPage(PREFIX_COUNTRY)
         }?.let {
             listResult.add(Pair("Quốc gia", it))
@@ -74,9 +70,20 @@ open class Ophim : MainAPI() {
     }
 
     override suspend fun quickSearch(query: String): List<SearchResponse>? {
-        val response = app.get("${DOMAIN}/v1/api/tim-kiem?keyword=$query").parsedSafe<Home>()
+        val response = app.get("$DOMAIN/v1/api/tim-kiem?keyword=$query").parsedSafe<Home>()
 
-        return response?.data?.items?.map { itemData -> itemData.toSearchResponse() }
+        return response?.data?.items?.mapNotNull { itemData ->
+            val phim18 = itemData.category.find { cate -> cate.slug == "phim-18" }
+            if (settingsForProvider.enableAdult) {
+                itemData.toSearchResponse()
+            } else {
+                if (phim18 != null) {   // Contain 18+ in movie
+                    null
+                } else {
+                    itemData.toSearchResponse()
+                }
+            }
+        }
     }
     override suspend fun loadPage(url: String): PageResponse? {
         val splitUrl = url.split("&")
@@ -84,7 +91,18 @@ open class Ophim : MainAPI() {
         val page = if (splitUrl.size > 1) splitUrl[1].toInt() else 1
         val response = app.get("${originUrl}?page=${page}").parsedSafe<Home>()
         val listItem =
-            response?.data?.items?.map { itemData -> itemData.toSearchResponse() } ?: listOf()
+            response?.data?.items?.mapNotNull { itemData ->
+                val phim18 = itemData.category.find { cate -> cate.slug == "phim-18" }
+                if (settingsForProvider.enableAdult) {
+                    itemData.toSearchResponse()
+                } else {
+                    if (phim18 != null) {   // Contain 18+ in movie
+                        null
+                    } else {
+                        itemData.toSearchResponse()
+                    }
+                }
+            } ?: listOf()
         return PageResponse(
             list = listItem,
             if (listItem.isEmpty()) null else "${originUrl}&${(page + 1)}"
@@ -106,31 +124,29 @@ open class Ophim : MainAPI() {
     )
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
         val list = app.get("${request.data}?page=${page}")
-            .parsedSafe<Home>()?.data?.items?.map { itemData ->
-                itemData.toSearchResponse()
+            .parsedSafe<Home>()?.data?.items?.mapNotNull { itemData ->
+                val phim18 = itemData.category.find { cate -> cate.slug == "phim-18" }
+                if (settingsForProvider.enableAdult) {
+                    itemData.toSearchResponse()
+                } else {
+                    if (phim18 != null) {   // Contain 18+ in movie
+                        null
+                    } else {
+                        itemData.toSearchResponse()
+                    }
+                }
             }
         return newHomePageResponse(request.name,list ?: emptyList(),true)
     }
 
-    private suspend fun extractItemFromUrl(
-        name: String,
-        url: String,
-        home: ArrayList<HomePageList>
-    ) {
-        app.get(url)
-            .parsedSafe<Home>()?.data?.items?.map { itemData ->
-                itemData.toSearchResponse()
-            }?.let {
-                home.add(HomePageList(name, it))
-            }
-    }
+
 
     override suspend fun load(url: String): LoadResponse? {
 
         val response = app.get(url).parsedSafe<ResponseData>()
         val movieDetail = response?.data?.item
         movieDetail?.let { movieDetailItem ->
-            val related =  loadPage(DOMAIN+ PREFIX_GENRE+"/"+movieDetail.category.first().slug)?.list
+            val related =  loadPage(DOMAIN + PREFIX_GENRE +"/"+movieDetail.category.first().slug)?.list
             return if (movieDetail.type.toType() == TvType.Movie) {
                 val listEp = arrayListOf<com.lagradost.cloudstream3.Episode>()
                 movieDetailItem.episodes.forEachIndexed { index, episode ->
@@ -230,7 +246,7 @@ open class Ophim : MainAPI() {
         return true
     }
 
-    fun ItemData.toSearchResponse(): MovieSearchResponse {
+    private fun ItemData.toSearchResponse(): MovieSearchResponse {
         return MovieSearchResponse(
             name = name,
             url = fixUrl(slug, DOMAIN_DETAIL_MOVIE),
