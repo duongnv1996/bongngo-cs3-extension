@@ -65,10 +65,10 @@ class FshareProvider : MainAPI() {
                 )
             }
             val list = arrayListOf<Pair<String, List<Page>>>()
-            list.add(Pair("Phim lẻ" , menuPhimLe))
-            list.add(Pair("Phim bộ" , menuPhimBo))
+            list.add(Pair("Phim lẻ", menuPhimLe))
+            list.add(Pair("Phim bộ", menuPhimBo))
             return list
-        }catch (e :Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         return null
@@ -81,15 +81,16 @@ class FshareProvider : MainAPI() {
         val list = html.select(".items .item").map { itemHtml ->
             MovieSearchResponse(
                 name = itemHtml.selectFirst("h3")?.text() ?: "",
-                url = "$URL_DETAIL${itemHtml.attr("id").replace("post-","")}",
+                url = "$URL_DETAIL${itemHtml.attr("id").replace("post-", "")}",
                 apiName = name,
                 type = TvType.TvSeries,
                 posterUrl = itemHtml.selectFirst("img")?.attr("src")
             )
         }
-        return PageResponse(list = list,getPagingResult(html))
+        return PageResponse(list = list, getPagingResult(html))
     }
-    private fun getPagingResult( document: Document): String? {
+
+    private fun getPagingResult(document: Document): String? {
         val tagPageResult: Element? = document.selectFirst(".pagination a")
         if (tagPageResult == null) { // only one page
 
@@ -105,11 +106,11 @@ class FshareProvider : MainAPI() {
                             //last page
                             //LogUtils.d("no more page")
                         } else {
-                            if ( listLiPage[i + 1] != null) {
+                            if (listLiPage[i + 1] != null) {
                                 val nextLi = listLiPage[i + 1]
                                 val a = nextLi
-                                if (a != null ) {
-                                    var nextUrl =a.attr("href")
+                                if (a != null) {
+                                    var nextUrl = a.attr("href")
                                     //LogUtils.d("has more page")
                                     return nextUrl
                                 } else {
@@ -129,6 +130,7 @@ class FshareProvider : MainAPI() {
         }
         return null
     }
+
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse? {
         val response = app.get("${request.data}/page/${page}").text
 //        val listType: Type = object : TypeToken<ArrayList<HomeItem>>() {}.getType()
@@ -136,13 +138,13 @@ class FshareProvider : MainAPI() {
         val list = html.select(".items .item").map { itemHtml ->
             MovieSearchResponse(
                 name = itemHtml.selectFirst("h3")?.text() ?: "",
-                url = "$URL_DETAIL${itemHtml.attr("id").replace("post-","")}",
+                url = "$URL_DETAIL${itemHtml.attr("id").replace("post-", "")}",
                 apiName = name,
                 type = TvType.TvSeries,
                 posterUrl = itemHtml.selectFirst("img")?.attr("src")
             )
         }
-        return newHomePageResponse(request.name, list ,true)
+        return newHomePageResponse(request.name, list, true)
     }
 
     override suspend fun search(query: String): List<SearchResponse>? {
@@ -153,12 +155,48 @@ class FshareProvider : MainAPI() {
         val response = app.get("https://thuvienhd.com/?feed=fsharejson&search=${query}").text
         val itemType = object : TypeToken<List<DetailMovie>>() {}.type
         var listRes = Gson().fromJson<List<DetailMovie>>(response, itemType)
-        val list = listRes?.map { itemData ->
-            itemData.toSearchResponse()
+        val listResult = arrayListOf<MovieSearchResponse>()
+        val list = listRes?.forEach { itemData ->
+            listResult.add(itemData.toSearchResponse())
         }
-        return list
+        if (MainAPI.settingsForProvider.enableAdult) {
+            val headersTimFshare =
+                mapOf("Authorization" to "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZnNoYXJlIiwidXVpZCI6IjcxZjU1NjFkMTUiLCJ0eXBlIjoicGFydG5lciIsImV4cGlyZXMiOjAsImV4cGlyZSI6MH0.WBWRKbFf7nJ7gDn1rOgENh1_doPc07MNsKwiKCJg40U")
+            val responseTimFshare = app.post(
+                "https://api.timfshare.com/v1/string-query-search?query=${query}",
+                headers = headersTimFshare
+            ).parsedSafe<SearchFshareResponse>()
+            responseTimFshare
+                ?.data?.filter {
+                    it.name.contains("mp4")
+                            || it.name.contains("mkv")
+                            || it.name.contains("wmv")
+                            || it.name.contains("mpg")
+                            || it.name.contains("avi")
+                }
+                ?.forEach {
+                    listResult.add(it.toSearchResponse())
+                }
+        }
+        return listResult
     }
+
     override suspend fun load(url: String): LoadResponse? {
+        if (url.contains("https://www.fshare.vn/")) {
+            //timfSHARE.com
+            val name = url.split("|")[1]
+            val size = url.split("|")[2]
+            val urlFile = url.split("|")[0]
+            return MovieLoadResponse(
+                name = name,
+                dataUrl = urlFile,
+                url = urlFile,
+                apiName = "Fshare",
+                type = TvType.Movie,
+                plot = name,
+                posterUrl = "https://media.comicbook.com/files/img/default-movie.png"
+            )
+        }
         val movie = app.get(url).parsedSafe<DetailMovie>()
         val listLink = arrayListOf<Link>()
 
@@ -177,7 +215,7 @@ class FshareProvider : MainAPI() {
             }
         }
         movie?.let { movie ->
-            
+
             return TvSeriesLoadResponse(
                 name = movie.title.split("&&")[0],
                 url = url,
@@ -310,6 +348,7 @@ class FshareProvider : MainAPI() {
             posterUrl = img
         )
     }
+
     fun DetailMovie.toSearchResponse(): MovieSearchResponse {
         return MovieSearchResponse(
             name = title,
@@ -317,6 +356,30 @@ class FshareProvider : MainAPI() {
             apiName = name,
             type = TvType.TvSeries,
             posterUrl = image
+        )
+    }
+
+
+    //// TIMFSHARE
+    data class SearchFshareResponse(
+        @JsonProperty("data") val data: List<DataItem>,
+    )
+
+    data class DataItem(
+        @JsonProperty("id") val id: String,
+        @JsonProperty("name") val name: String,
+        @JsonProperty("url") val url: String,
+        @JsonProperty("size") val size: Long,
+        @JsonProperty("file_type") val file_type: Int,
+    )
+
+    fun DataItem.toSearchResponse(): MovieSearchResponse {
+        return MovieSearchResponse(
+            name = name,
+            url = "${url}|${name}|${size}",
+            apiName = "Fshare",
+            type = TvType.TvSeries,
+            posterUrl = "https://media.comicbook.com/files/img/default-movie.png"
         )
     }
 }
