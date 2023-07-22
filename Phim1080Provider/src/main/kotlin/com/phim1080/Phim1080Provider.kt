@@ -185,13 +185,17 @@ class Phim1080Provider : MainAPI() {
                 "X-Requested-With" to "XMLHttpRequest"
             )
         )
-        val optEncode = if (doc.text.indexOf("\",\"opt\":\"") != -1) {
-            doc.text.substringAfter("\",\"opt\":\"").substringBefore("\"},")
+        val optEncode = if (doc.text.indexOf("\"opt\":\"") != -1) {
+            doc.text.substringAfter("\"opt\":\"").substringBefore("\"},")
         } else { "" }
         val opt = decodeString(optEncode as String, 69).replace("0uut$", "_").replace("index.m3u8", "3000k/hls/mixed.m3u8")
-        val hlsEncode = doc.text.substringAfter(":{\"hls\":\"").substringBefore("\"},")
+        val hlsEncode = if (doc.text.indexOf(":{\"hls\":\"") != -1) {
+            doc.text.substringAfter(":{\"hls\":\"").substringBefore("\"},")
+        } else { "" }
         val hls = decodeString(hlsEncode as String, 69)
-        val fb = doc.text.substringAfter("fb\":[{\"src\":\"").substringBefore("\",").replace("\\", "")
+        val fb = if (doc.text.indexOf("\"fb\":[{\"src\":\"") != -1) {
+            doc.text.substringAfter("\"fb\":[{\"src\":\"").substringBefore("\",").replace("\\", "")
+        } else { "" }
         
         listOfNotNull(
             if (hls.contains(".m3u8")) {Triple("$hls", "HS", true)} else null,
