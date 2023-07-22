@@ -3,6 +3,7 @@ package com.phim1080
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
+import com.lagradost.cloudstream3.mvvm.safeApiCall
 import com.lagradost.cloudstream3.utils.*
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import org.jsoup.nodes.Element
@@ -19,8 +20,8 @@ class Phim1080Provider : MainAPI() {
         TvType.Anime,
         TvType.AsianDrama
     )
-
-    private fun encodeString(e: String, t: Int): String {
+    
+    private fun decodeString(e: String, t: Int): String {
         var a = ""
         for (i in 0 until e.length) {
             val r = e[i].code
@@ -90,7 +91,7 @@ class Phim1080Provider : MainAPI() {
             it.toSearchResult()
         }
     }
-
+    
     override suspend fun load( url: String ): LoadResponse {
         val document = app.get(
             url = url,
@@ -131,15 +132,15 @@ class Phim1080Provider : MainAPI() {
                 "$mainUrl/api/v2/films/$fId/episodes?sort=name",
                 referer = link,
                 headers = mapOf(
-                    "Content-Type" to "application/json",
-                    "X-Requested-With" to "XMLHttpRequest",
-                )
-            ).parsedSafe<MediaDetailEpisodes>()?.eps?.map { ep ->
+                        "Content-Type" to "application/json",
+                        "X-Requested-With" to "XMLHttpRequest",
+                    )
+                ).parsedSafe<MediaDetailEpisodes>()?.eps?.map { ep ->
                 Episode(
                     data = fixUrl(ep.link.toString()),
                     name = ep.detailname,
                     episode = ep.episodeNumber,
-                )
+                    )
             } ?: listOf()
             newTvSeriesLoadResponse(title, url, TvType.TvSeries, epsInfo) {
                 this.posterUrl = poster
@@ -164,7 +165,7 @@ class Phim1080Provider : MainAPI() {
             }
         }
     }
-
+            
     override suspend fun loadLinks(
         data: String,
         isCasting: Boolean,
@@ -184,18 +185,32 @@ class Phim1080Provider : MainAPI() {
                 "X-Requested-With" to "XMLHttpRequest"
             )
         )
-        val source = doc.text.substringAfter(":{\"hls\":\"").substringBefore("\"},")
-        val link = encodeString(source, 69)
-        callback.invoke(
-            ExtractorLink(
-                "HS",
-                "HS",
-                link,
-                referer = data,
-                quality = Qualities.Unknown.value,
-                isM3u8 = true,
-            )
-        )
+        val optEncode = if (doc.text.indexOf("\",\"opt\":\"") != -1) {
+            doc.text.substringAfter("\",\"opt\":\"").substringBefore("\"},")
+        } else { "" }
+        val opt = decodeString(optEncode as String, 69).replace("0uut$", "_").replace("index.m3u8", "3000k/hls/mixed.m3u8")
+        val hlsEncode = doc.text.substringAfter(":{\"hls\":\"").substringBefore("\"},")
+        val hls = decodeString(hlsEncode as String, 69)
+        val fb = doc.text.substringAfter("fb\":[{\"src\":\"").substringBefore("\",").replace("\\", "")
+        
+        listOfNotNull(
+            if (hls.contains(".m3u8")) {Triple("$hls", "HS", true)} else null,
+            if (fb.contains(".mp4")) {Triple("$fb", "FB", false)} else null,
+            if (opt.contains(".m3u8")) {Triple("$opt", "OP", true)} else null,
+        ).apmap { (link, source, isM3u8) ->
+            safeApiCall {
+                callback.invoke(
+                    ExtractorLink(
+                        source,
+                        source,
+                        link,
+                        referer = data,
+                        quality = Qualities.Unknown.value,
+                        isM3u8,
+                        )
+                    )
+                }
+            }
         val subId = doc.parsedSafe<Media>()?.subtitle?.vi
         val isSubIdEmpty = subId.isNullOrBlank()
         if (!isSubIdEmpty) {
