@@ -197,12 +197,13 @@ class TVHayProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        Log.d("DuongKK", "data LoadLinks ---> $data ")
-        val listEp = getDataEpisode(data)
-        val path = data.split("/").last()
+        val dataDecrypted = decryptData(data)
+
+        val listEp = getDataEpisode(dataDecrypted)
+        val path = dataDecrypted.split("/").last()
         val idEp = path.split(".")[1]
         val idMovie = path.split(".")[0].split("-").last()
-        Log.d("DuongKK", "data LoadLinks ---> $data  --> $idEp --> $idMovie")
+        Log.d("DuongKK", "data LoadLinks ---> $dataDecrypted  --> $idEp --> $idMovie")
         try {
             val urlRequest =
                 "${this.mainUrl}/ajax/player/" //'https://subnhanh.net/frontend/default/ajax-player'

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.syncproviders.providers.FshareApi
 import com.lagradost.cloudstream3.utils.AppUtils.toJson
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.Qualities
@@ -244,21 +245,12 @@ class FshareProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        val login = app.post(
-            "https://api2.fshare.vn/api/user/login/",
-            json = mapOf(
-                "user_email" to "boxphim705@gmail.com",
-                "password" to "asdfghjkl",
-                "app_key" to "tVDNf8QcQ5Sfasmm5ennLIjF5D11k21xCruVaAeJ",
-            ).toJson(),
-            headers = mapOf(
-                "user-agent" to "Dalvik/2.1.0 (Linux; U; Android 6.0.1; FPT Play Box Build/Normal-6.7.106-20190111)"
-            )
-        ).parsedSafe<FshareLoginInfo>()
+        val dataDecrypted = decryptData(data)
+        val login = FshareApi().loginInfo()
         login?.token?.let {
             val download = app.post(
                 "https://api2.fshare.vn/api/Session/download",
-                json = mapOf("url" to data, "token" to login.token).toJson(),
+                json = mapOf("url" to dataDecrypted, "token" to login.token).toJson(),
                 headers = mapOf(
                     "user-agent" to "Dalvik/2.1.0 (Linux; U; Android 6.0.1; FPT Play Box Build/Normal-6.7.106-20190111)",
                     "cookie" to "session_id=${login.session_id}"
@@ -269,7 +261,7 @@ class FshareProvider : MainAPI() {
                 callback.invoke(
                     ExtractorLink(
                         source = it.location,
-                        name = data,
+                        name = dataDecrypted,
                         url = it.location,
                         referer = "",
                         isM3u8 = false,

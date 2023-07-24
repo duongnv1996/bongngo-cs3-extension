@@ -233,11 +233,13 @@ open class Ophim : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
+        val dataDecrypted = decryptData(data)
+
         callback.invoke(
             ExtractorLink(
-                source = data,
+                source = dataDecrypted,
                 name = API_NAME,
-                url = data,
+                url = dataDecrypted,
                 referer = "",
                 quality = getQualityFromName("1080P"),
                 isM3u8 = true

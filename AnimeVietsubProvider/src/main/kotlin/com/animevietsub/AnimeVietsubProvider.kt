@@ -214,8 +214,8 @@ class AnimeVietsubProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        Log.d("DuongKK", "data LoadLinks ---> $data ")
-        val idEp = data
+        val dataDecrypted = decryptData(data)
+        val idEp = dataDecrypted
 
         try {
             //get server

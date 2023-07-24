@@ -175,8 +175,9 @@ class SubNhanhProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        Log.d("DuongKK", "data LoadLinks ---> $data")
-        var doc: Document = Jsoup.connect(data).timeout(60 * 1000).get()
+        val dataDecrypted = decryptData(data)
+
+        var doc: Document = Jsoup.connect(dataDecrypted).timeout(60 * 1000).get()
         var html = doc.html()
 
         val idMovie = this.getParamFromJS(html, "fcurrentid")

@@ -232,7 +232,9 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        val document = app.get(data).document
+        val dataDecrypted = decryptData(data)
+
+        val document = app.get(dataDecrypted).document
 
         val key = document.select("div#content script")
             .find { it.data().contains("filmInfo.episodeID =") }?.data()?.let { script ->
@@ -241,7 +243,7 @@ class PhimmoiProvider : MainAPI() { // all providers must be an instance of Main
                     // Not mainUrl
                     url = "${this.mainUrl}/chillsplayer.php",
                     data = mapOf("qcao" to id, "sv" to "0"),
-                    referer = data,
+                    referer = dataDecrypted,
                     headers = mapOf(
                         "X-Requested-With" to "XMLHttpRequest",
                         "Content-Type" to "application/x-www-form-urlencoded; charset=UTF-8"
