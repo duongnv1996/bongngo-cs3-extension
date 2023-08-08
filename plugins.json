@@ -3,7 +3,7 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=bluphim.com&sz=%size%",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/tuan041/repo041-cs3-build",
-        "fileSize": 13311,
+        "fileSize": 13909,
         "status": 1,
         "language": "vi",
         "authors": [
@@ -15,7 +15,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
         "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3-build/builds/Bluphim.cs3",
@@ -25,7 +25,7 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=motphimtv.vip&sz=%size%",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/tuan041/repo041-cs3-build",
-        "fileSize": 19412,
+        "fileSize": 20014,
         "status": 1,
         "language": "vi",
         "authors": [
@@ -37,7 +37,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "Motphim",
         "description": "Xem phim hay mi\u1ec5n ph\u00ed ch\u1ea5t l\u01b0\u1ee3ng cao v\u1edbi ph\u1ee5 \u0111\u1ec1 ti\u1ebfng vi\u1ec7t!",
         "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3-build/builds/Motphim.cs3",
