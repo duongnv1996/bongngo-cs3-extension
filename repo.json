@@ -1,7 +1,7 @@
 {
   "name": "BongNgoPlugin",
   "description": "BongNgoPlugin",
-  "manifestVersion": 17,
+  "manifestVersion": 18,
   "pluginLists": [
     "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/plugins.json"
   ]
