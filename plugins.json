@@ -180,10 +180,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 12,
+        "version": 19,
         "internalName": "PhimmoiProvider",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/PhimmoiProvider.cs3",
+        "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3-build/builds/Phimmoichill.cs3",
         "name": "PhimmoiProvider"
     },
     {
