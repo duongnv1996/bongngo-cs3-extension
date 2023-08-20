@@ -229,5 +229,26 @@
         "description": "#TVHay Phim Thuy\u1ebft Minh",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/TvHayProvider.cs3",
         "name": "TvHayProvider"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=xem8z.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/tuan041/repo041-cs3",
+        "fileSize": 17754,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "TuaSan"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "Xem8z",
+        "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
+        "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3/builds/Xem8z.cs3",
+        "name": "Xem8z"
     }
 ]
