@@ -1,5 +1,27 @@
 [
     {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=bilutve.org&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Unknow8x/test",
+        "fileSize": 15076,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Hexated, Unknow8x"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "TvSeries",
+            "Movie",
+            "OVA"
+        ],
+        "version": 1,
+        "internalName": "BilutvProvider",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BilutvProvider.cs3",
+        "name": "BilutvProvider"
+    },
+    {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bluphim.com&sz=%size%",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/tuan041/repo041-cs3-build",
