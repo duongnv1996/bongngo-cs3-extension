@@ -246,7 +246,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "TvHayProvider",
         "description": "#TVHay Phim Thuy\u1ebft Minh",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/TvHayProvider.cs3",
