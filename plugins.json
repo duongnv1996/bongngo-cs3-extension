@@ -4,7 +4,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Unknow8x/test",
         "fileSize": 15076,
-        "status": 1,
+        "status": 0,
         "language": "vi",
         "authors": [
             "Hexated, Unknow8x"
@@ -213,7 +213,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 16276,
-        "status": 1,
+        "status": 0,
         "language": "vi",
         "authors": [
             "Blue"
@@ -235,7 +235,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 14543,
-        "status": 1,
+        "status": 0,
         "language": "vi",
         "authors": [
             "Blue"
