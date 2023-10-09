@@ -1,5 +1,26 @@
 [
     {
+        "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVXgt1ROWUjrXsmdPpum1ql3IGegwcagLeNZsiSO0J&s",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 41610,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "BongNgoTVProvider",
+        "description": "#1",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BongNgoTVProvider.cs3",
+        "name": "BongNgoTVProvider"
+    },
+    {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bilutve.org&sz=%size%",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Unknow8x/test",
