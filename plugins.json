@@ -110,7 +110,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 22507,
-        "status": 0,
+        "status": 1,
         "language": "vi",
         "authors": [
             "Blue"
@@ -118,7 +118,7 @@
         "tvTypes": [
             "Movie"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "FshareProvider",
         "description": "Fshare 4K Bluray , 2k ,1080P \u0111\u1ee7 th\u1ec3 lo\u1ea1i. Bu\u1ed5i t\u1ed1i ae k\u00e9o nhi\u1ec1u h\u01a1i lag :3",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/FshareProvider.cs3",
