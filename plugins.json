@@ -45,12 +45,12 @@
     {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bluphim.com&sz=%size%",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/tuan041/repo041-cs3-build",
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 17627,
-        "status": 0,
+        "status": 1,
         "language": "vi",
         "authors": [
-            "TuaSan"
+            "Blue"
         ],
         "tvTypes": [
             "AsianDrama",
@@ -58,10 +58,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 7,
+        "version": 10,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
-        "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3-build/builds/Bluphim.cs3",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BluphimProvider.cs3",
         "name": "Bluphim"
     },
     {
