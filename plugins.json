@@ -58,7 +58,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 10,
+        "version": 11,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BluphimProvider.cs3",
