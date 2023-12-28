@@ -4,7 +4,7 @@
         "apiVersion": 2,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 41610,
-        "status": 0,
+        "status": 1,
         "language": "vi",
         "authors": [
             "Blue"
@@ -14,7 +14,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 3,
+        "version": 5,
         "internalName": "BongNgoTVProvider",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BongNgoTVProvider.cs3",
