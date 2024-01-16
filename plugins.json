@@ -245,7 +245,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "SubnhanhProvider",
         "description": "#Subnhanh",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/SubnhanhProvider.cs3",
