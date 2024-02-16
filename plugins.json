@@ -35,7 +35,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 7,
+        "version": 8,
         "internalName": "BongNgoTVProvider",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BongNgoTVProvider.cs3",
