@@ -11,10 +11,10 @@
         ],
         "tvTypes": [
             "AsianDrama",
-            "TvSeries",
+            "TvSeries", 
             "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "JustChill4KProvider",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/JustChill4KProvider.cs3",
