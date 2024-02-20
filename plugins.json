@@ -132,7 +132,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 17172,
-        "status": 0,
+        "status": 1,
         "language": "vi",
         "authors": [
             "Blue"
@@ -140,7 +140,7 @@
         "tvTypes": [
             "Anime"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "AnimeVietsubProvider",
         "description": "Chuy\u00ean Anime Vietsub 1080P",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/AnimeVietsubProvider.cs3",
