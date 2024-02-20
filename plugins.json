@@ -264,7 +264,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 26,
+        "version": 27,
         "internalName": "PhimmoiProvider",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/PhimmoiProvider.cs3",
@@ -286,7 +286,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 8,
+        "version": 9,
         "internalName": "SubnhanhProvider",
         "description": "#Subnhanh",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/SubnhanhProvider.cs3",
