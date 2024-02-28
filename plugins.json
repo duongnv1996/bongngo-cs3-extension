@@ -99,7 +99,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 16,
+        "version": 17,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BluphimProvider.cs3",
@@ -132,7 +132,7 @@
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
         "fileSize": 17172,
-        "status": 1,
+        "status": 0,
         "language": "vi",
         "authors": [
             "Blue"
