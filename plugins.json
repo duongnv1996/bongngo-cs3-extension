@@ -198,7 +198,7 @@
         "tvTypes": [
             "Live"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "LiveTVProvider",
         "description": "Live TV",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/LiveTVProvider.cs3",
