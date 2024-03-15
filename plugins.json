@@ -1,5 +1,26 @@
 [
     {
+        "iconUrl": "https://animehay.me/themes/img/favicon.ico",
+        "apiVersion": 2,
+        "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
+        "fileSize": 41610,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Blue"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries", 
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "Animehay",
+        "description": "#1",
+        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Animehay.cs3",
+        "name": "Animehay"
+    },
+    {
         "iconUrl": "https://hhpanda.io/static/logo.png",
         "apiVersion": 2,
         "repositoryUrl": "https://github.com/duongnv1996/bongngo-cs3-extension",
