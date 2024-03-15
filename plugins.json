@@ -14,7 +14,7 @@
             "TvSeries", 
             "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "HHPanda",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/HhpandaProvider.cs3",
@@ -120,7 +120,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 17,
+        "version": 18,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BluphimProvider.cs3",
@@ -307,7 +307,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 9,
+        "version": 10,
         "internalName": "SubnhanhProvider",
         "description": "#Subnhanh",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/SubnhanhProvider.cs3",
