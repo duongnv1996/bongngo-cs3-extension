@@ -14,7 +14,7 @@
             "TvSeries", 
             "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "Animehay",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Animehay.cs3",
@@ -182,7 +182,7 @@
         "tvTypes": [
             "Anime"
         ],
-        "version": 3,
+        "version": 4,
         "internalName": "AnimeVietsubProvider",
         "description": "Chuy\u00ean Anime Vietsub 1080P",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/AnimeVietsubProvider.cs3",
@@ -306,7 +306,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 32,
+        "version": 33,
         "internalName": "PhimmoiProvider",
         "description": "#1",
         "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/PhimmoiProvider.cs3",
