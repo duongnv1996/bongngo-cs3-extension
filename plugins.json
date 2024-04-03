@@ -14,10 +14,10 @@
             "TvSeries", 
             "Movie"
         ],
-        "version": 4,
+        "version": 100,
         "internalName": "Animehay",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Animehay.cs3",
+        "url": "https://apk.bongngotv.app/Animehay.cs3",
         "name": "Animehay"
     },
     {
@@ -35,10 +35,10 @@
             "TvSeries", 
             "Movie"
         ],
-        "version": 2,
+        "version": 100,
         "internalName": "HHPanda",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/HhpandaProvider.cs3",
+        "url": "https://apk.bongngotv.app/HhpandaProvider.cs3",
         "name": "HHPanda"
     },
     {
@@ -56,10 +56,10 @@
             "TvSeries", 
             "Movie"
         ],
-        "version": 3,
+        "version": 100,
         "internalName": "JustChill4KProvider",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/JustChill4KProvider.cs3",
+        "url": "https://apk.bongngotv.app/JustChill4KProvider.cs3",
         "name": "JustChill4KProvider"
     },{
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVXgt1ROWUjrXsmdPpum1ql3IGegwcagLeNZsiSO0J&s",
@@ -76,10 +76,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 3,
+        "version": 100,
         "internalName": "VIP",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/VipProvider.cs3",
+        "url": "https://apk.bongngotv.app/VipProvider.cs3",
         "name": "VIP"
     },
     {
@@ -97,10 +97,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 9,
+        "version": 100,
         "internalName": "BongNgoTVProvider",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BongNgoTVProvider.cs3",
+        "url": "https://apk.bongngotv.app/BongNgoTVProvider.cs3",
         "name": "BongNgoTVProvider"
     },
     {
@@ -122,7 +122,7 @@
         ],
         "version": 2,
         "internalName": "BilutvProvider",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BilutvProvider.cs3",
+        "url": "https://apk.bongngotv.app/BilutvProvider.cs3",
         "name": "BilutvProvider"
     },
     {
@@ -141,10 +141,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 19,
+        "version": 100,
         "internalName": "Bluphim",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/BluphimProvider.cs3",
+        "url": "https://apk.bongngotv.app/BluphimProvider.cs3",
         "name": "Bluphim"
     },
     {
@@ -163,10 +163,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "Motphim",
         "description": "Xem phim hay mi\u1ec5n ph\u00ed ch\u1ea5t l\u01b0\u1ee3ng cao v\u1edbi ph\u1ee5 \u0111\u1ec1 ti\u1ebfng vi\u1ec7t!",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Motphim.cs3",
+        "url": "https://apk.bongngotv.app/Motphim.cs3",
         "name": "Motphim"
     },
     {
@@ -182,10 +182,10 @@
         "tvTypes": [
             "Anime"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "AnimeVietsubProvider",
         "description": "Chuy\u00ean Anime Vietsub 1080P",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/AnimeVietsubProvider.cs3",
+        "url": "https://apk.bongngotv.app/AnimeVietsubProvider.cs3",
         "name": "AnimeVietsubProvider"
     },
     {
@@ -201,10 +201,10 @@
         "tvTypes": [
             "Movie"
         ],
-        "version": 8,
+        "version": 9,
         "internalName": "FshareProvider",
         "description": "Fshare 4K Bluray , 2k ,1080P \u0111\u1ee7 th\u1ec3 lo\u1ea1i. Bu\u1ed5i t\u1ed1i ae k\u00e9o nhi\u1ec1u h\u01a1i lag :3",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/FshareProvider.cs3",
+        "url": "https://apk.bongngotv.app/FshareProvider.cs3",
         "name": "FshareProvider"
     },
     {
@@ -219,10 +219,10 @@
         "tvTypes": [
             "Live"
         ],
-        "version": 4,
+        "version": 100,
         "internalName": "LiveTVProvider",
         "description": "Live TV",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/LiveTVProvider.cs3",
+        "url": "https://apk.bongngotv.app/LiveTVProvider.cs3",
         "name": "LiveTVProvider"
     },
     {
@@ -241,10 +241,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "LoklokProvider",
         "description": "#1 best extension in VN",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/LoklokProvider.cs3",
+        "url": "https://apk.bongngotv.app/LoklokProvider.cs3",
         "name": "LoklokProvider"
     },
     {
@@ -263,10 +263,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 3,
+        "version": 4,
         "internalName": "OphimProvider",
         "description": "#Ophim API",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/OphimProvider.cs3",
+        "url": "https://apk.bongngotv.app/OphimProvider.cs3",
         "name": "OphimProvider"
     },
     {
@@ -285,10 +285,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "Phim1080Provider",
         "description": "Xem Phim Online Ch\u1ea5t L\u01b0\u1ee3ng Cao",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/Phim1080Provider.cs3",
+        "url": "https://apk.bongngotv.app/Phim1080Provider.cs3",
         "name": "Phim1080Provider"
     },
     {
@@ -306,10 +306,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 34,
+        "version": 100,
         "internalName": "PhimmoiProvider",
         "description": "#1",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/PhimmoiProvider.cs3",
+        "url": "https://apk.bongngotv.app/PhimmoiProvider.cs3",
         "name": "PhimmoiProvider"
     },
     {
@@ -328,10 +328,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 10,
+        "version": 100,
         "internalName": "SubnhanhProvider",
         "description": "#Subnhanh",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/SubnhanhProvider.cs3",
+        "url": "https://apk.bongngotv.app/SubnhanhProvider.cs3",
         "name": "SubnhanhProvider"
     },
     {
@@ -350,10 +350,10 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "TvHayProvider",
         "description": "#TVHay Phim Thuy\u1ebft Minh",
-        "url": "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/TvHayProvider.cs3",
+        "url": "https://apk.bongngotv.app/TvHayProvider.cs3",
         "name": "TvHayProvider"
     },
     {
@@ -371,7 +371,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "Xem8z",
         "description": "Phim online si\u00eau ch\u1ea5t l\u01b0\u1ee3ng!",
         "url": "https://raw.githubusercontent.com/tuan041/repo041-cs3-build/builds/Xem8z.cs3",
