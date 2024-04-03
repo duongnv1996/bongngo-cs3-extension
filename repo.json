@@ -3,6 +3,6 @@
   "description": "BongNgoPlugin",
   "manifestVersion": 26,
   "pluginLists": [
-    "https://raw.githubusercontent.com/duongnv1996/bongngo-cs3-extension/builds/plugins.json"
+    "https://rgon.cc/plugin"
   ]
 }
